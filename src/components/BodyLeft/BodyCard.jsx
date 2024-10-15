@@ -1,8 +1,13 @@
 import React from 'react';
 import { FaRegBookmark } from 'react-icons/fa';
 
-const BodyCard = ({ cafeData }) => {
+const BodyCard = ({ cafeData,setSaveInfo, saveInfo }) => {
     const { thumbnailImg, title, profileImg, profileName, postDate, readTime, hashtag } = cafeData
+
+    const readBtn = () =>{
+        const titleData = {title, readTime}
+        setSaveInfo([...saveInfo, titleData])
+        }
     return (
         <div className="mb-[78px]">
             <img src={thumbnailImg} alt="" className='rounded-lg' />
@@ -22,10 +27,10 @@ const BodyCard = ({ cafeData }) => {
             <h1 className="my-4 lg:text-[40px] md:text-2xl text-xl font-bold md:leading-[64px]">{title}</h1>
             <div className="flex items-center gap-4 font-medium text-[#11111199] text-xl">
                 {
-                    hashtag.map(tag => <p className='md:text-base text-xs'>{tag}</p>)
+                    hashtag.map((tag, index) => <p key={index} className='md:text-base text-xs'>{tag}</p>)
                 }
             </div>
-            <button className="mt-[21px] text-[#6047EC] md:text-xl text-sm font-semibold underline">Make as Read</button>
+            <button onClick={() => readBtn()} className="mt-[21px] text-[#6047EC] md:text-xl text-sm font-semibold underline">Make as Read</button>
         </div>
     );
 };

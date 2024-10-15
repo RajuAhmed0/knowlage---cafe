@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import BodyCard from './BodyCard';
 
-const BodyLeft = () => {
+const BodyLeft = ({ saveInfo, setSaveInfo}) => {
 
     const [cardDatas, setCardDatas] = useState([]);
-    console.log(cardDatas);
+    // console.log(cardDatas);
 
 
     useEffect(() => {
@@ -19,6 +19,8 @@ const BodyLeft = () => {
                 cardDatas.map(cafeData => <BodyCard
                 key={cafeData.id}
                 cafeData = {cafeData}
+                saveInfo={saveInfo}
+                setSaveInfo={setSaveInfo}
                 ></BodyCard>)
 
             }
